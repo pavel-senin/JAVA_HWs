@@ -1,0 +1,51 @@
+import java.util.*;
+import java.lang.*;
+
+class Rextester
+{  
+    public static void main(String args[])
+    {
+        System.out.println("Would you like to calculate anything (Y - Yes; N - No)?");
+        System.out.println("Input your decision, please: ");
+        Scanner scan = new Scanner(System.in);
+		String ANSWER = scan.nextLine();
+        while (ANSWER.equals("Y"))
+        {
+            System.out.println("Input 2 numbers");
+            System.out.println("Input a:");
+            String a = scan.nextLine();
+            System.out.println("Input b:");
+            String b = scan.nextLine();
+            System.out.println("Choose the operation, please(+,-,*,/): ");
+            String OPERATION = scan.nextLine();
+            if (OPERATION.equals("/"))
+            {
+                if (Double.parseDouble(b) != 0)
+                    System.out.printf("The answer: %s%s%s=%f", a,OPERATION,b,Double.parseDouble(a)/Double.parseDouble(b));
+                else
+                    System.out.printf("b can not be equal to 0");
+            }
+            else if (OPERATION.equals("+"))
+            {
+                System.out.printf("The answer: %s%s%s=%f", a,OPERATION,b,Double.parseDouble(a)+Double.parseDouble(b));
+            }
+            else if (OPERATION.equals("-"))
+            {
+                System.out.printf("The answer: %s%s%s=%f", a,OPERATION,b,Double.parseDouble(a)-Double.parseDouble(b));
+            }
+            else if (OPERATION.equals("*"))
+            {
+                System.out.printf("The answer: %s%s%s=%f", a,OPERATION,b,Double.parseDouble(a)*Double.parseDouble(b));
+            }
+            else
+            {
+                System.out.printf("Some error occured, try again");
+            }
+            System.out.println();
+            System.out.println("Would you like to calculate anything (Y - Yes; N - No)?");
+            System.out.println("Input your decision, please: ");
+            ANSWER = scan.nextLine();
+        }
+        System.out.println("Turning off");
+    }
+}
