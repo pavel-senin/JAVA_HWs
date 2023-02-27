@@ -1,0 +1,29 @@
+import java.util.*;
+import java.lang.*;
+
+class Rextester
+{  
+    public static void main(String args[])
+    {
+        System.out.println("Input your string, please |>");
+        Scanner scan = new Scanner(System.in);
+		String ANSWER = scan.nextLine();
+        for (int i=0; i<ANSWER.length()-1;)
+        {
+            char charUpperCase = Character.toUpperCase(ANSWER.charAt(i+1));
+            if (ANSWER.charAt(i) == ' ' && ANSWER.charAt(i+1) == charUpperCase)
+            {
+                ANSWER = new StringBuilder(ANSWER).insert(i, ".").toString();
+                i=i+1;
+            }
+            if (i==ANSWER.length()-2)
+            {
+                ANSWER = ANSWER+".";
+                i=i+5;
+            }
+            i=i+1;
+        }
+        System.out.println(ANSWER);
+        System.out.println("Turning off");
+    }
+}
