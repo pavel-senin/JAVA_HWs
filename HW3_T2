@@ -1,0 +1,36 @@
+import java.util.*;
+
+class HW3_T2
+{  
+    public static void main(String args[])
+    {
+        List<Integer> list = new ArrayList<>();
+        Random amount = new Random();
+        int AMOUNT = amount.nextInt(15)+5;
+        //рандомное добавление целых чисел
+        for (int i=0; i<AMOUNT;i++)
+        {
+            Random random = new Random();
+            list.add(random.nextInt(100));
+            System.out.println("Elem number " + i + " equals " +  list.get(i));
+        }
+        //удаление четных
+        System.out.println("DELETING");
+        for (int i=0; i<list.size();)
+        {
+            if ((list.get(i)%2)==0)
+            {
+                list.remove(i);
+            }
+            else
+            {
+                i=i+1;
+            }
+        }
+        //вывод после удаления
+        for (int i=0; i<list.size();i++)
+        {
+            System.out.println("Elem number " + i + " equals " +  list.get(i));
+        }
+    }
+}
