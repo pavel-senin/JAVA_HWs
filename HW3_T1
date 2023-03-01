@@ -1,0 +1,20 @@
+import java.util.*;
+
+class HW3_T1
+{  
+    public static void main(String args[])
+    {
+        List<Integer> list = new ArrayList<>();
+        double average=0;
+        for (int i=0; i<10;i++)
+        {
+            Random random = new Random();
+            list.add(random.nextInt(100));
+            average = average+list.get(i);
+        }
+        average = average/list.size();
+        System.out.println("Max value is " + Collections.max(list));
+        System.out.println("Min value is " + Collections.min(list));
+        System.out.println("Average is " + average);
+    }
+}
