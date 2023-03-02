@@ -1,0 +1,91 @@
+import java.util.*;
+
+class HW4_T1
+{  
+    public static void main(String args[])
+    {
+        Map<String, HashSet<Integer>> hm = new HashMap<>();
+        Scanner scan = new Scanner(System.in);
+        for (boolean a = true; a==true;)
+        {
+            //Проверка на ввод
+            System.out.println("Do you want to change your phonebook? ('1' to add new, '2' to delete number, '3' to find or N to exit)");
+            
+		    String ANSWER = scan.nextLine();
+            String NUMBER;
+            //Если "1", тогда добавляем запись
+            if (ANSWER.equals("1"))
+            {
+                //Получение логина и номера для добавления
+                System.out.println("Input login, please, to add");
+                String Login = scan.nextLine();
+                System.out.println("Input number, please, to add");
+                NUMBER = scan.nextLine();
+                //Получение списка телефонов по логину и возврат в HashMap
+                HashSet<Integer> hs = new HashSet<>();
+                hs.add(0);
+                if (!hm.containsKey(Login))
+                {
+                    hm.put(Login, hs);
+                }
+                
+                hs = hm.get(Login);
+                hs.add(Integer.parseInt(NUMBER));
+                hm.put(Login, hs);
+            }
+            //Если "2", тогда удаляем
+            else if (ANSWER.equals("2"))
+            {
+                //Получение логина для удаления по нему
+                System.out.println("Input login, please, to delete number");
+                String Login = scan.nextLine();
+                //Удаление при условии наличия логина
+                if (hm.containsKey(Login))
+                {
+                    HashSet<Integer> hs = new HashSet<>();
+                    hs = hm.get(Login);
+                    System.out.println(hs);
+                    //Удаление номера
+                    System.out.println("Input number to delete it");
+                    NUMBER = scan.nextLine();
+                    hs.remove(Integer.parseInt(NUMBER));
+                    hm.put(Login, hs);
+                }
+                else
+                {
+                    System.out.println("There is no Login " + Login + " in phonebook");
+                }
+            }
+            //Если "3", тогда находим по логину
+            else if (ANSWER.equals("3"))
+            {
+                //Получение логина и вывод
+                System.out.println("Input login, please, to output it");
+                String Login = scan.nextLine();
+                //Вывод при условии наличия логина
+                if (hm.containsKey(Login))
+                {
+                    HashSet<Integer> hs = new HashSet<>();
+                    hs = hm.get(Login);
+                    System.out.println("Numbers of " + Login + ":");
+                    System.out.println(hs);
+                }
+                else
+                {
+                    System.out.println("There is no Login " + Login + " in phonebook");
+                }
+            }
+            //Если "N", тогда выходим из цикла
+            else
+            {
+                a = false;
+            }
+            System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            System.out.println(hm);
+            System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        }
+        scan.close();
+        System.out.println("FINAL PHONEBOOK");
+        System.out.println(hm);
+    }
+}
