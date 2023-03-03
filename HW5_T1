@@ -1,0 +1,59 @@
+import java.util.*;
+
+class HW3_T2
+{  
+    public static void main(String args[])
+    {
+        List<Integer> list1 = new ArrayList<>();
+        List<Integer> list2 = new ArrayList<>();
+        Random amount = new Random();
+        int AMOUNT = amount.nextInt(5)+9;
+        //рандомное добавление целых чисел в первый массив
+        for (int i=0; i<AMOUNT;i++)
+        {
+            Random random = new Random();
+            list1.add(random.nextInt(6));
+        }
+        System.out.println("First array");
+        System.out.println(list1);
+        //рандомное добавление целых чисел во второй массив
+        AMOUNT = amount.nextInt(5)+9;
+        for (int i=0; i<AMOUNT;i++)
+        {
+            Random random = new Random();
+            list2.add(random.nextInt(6));
+        }
+        System.out.println("Second array");
+        System.out.println(list2);
+        //Введение третьего массива для поиска длиннейшей одинаковой последовательности
+        List<Integer> longest = new ArrayList<>();
+        for (int i=0; i<list1.size() && longest.size()<list2.size()-i;i++)
+        {
+            List<Integer> longest_tmp = new ArrayList<>();
+            int pass = i;
+            for (int j=0; j<list2.size();j++)
+            {
+                
+                if (pass<list1.size() && list1.get(pass) == list2.get(j))
+                {
+                    longest_tmp.add(list2.get(j));
+                    pass = pass+1;
+                    
+                }
+                else
+                {
+                    pass = i;
+                    if (longest_tmp.size()>longest.size())
+                    {
+                        longest.removeAll(longest);
+                        longest.addAll(longest_tmp);
+                        pass = i;
+                    }
+                    longest_tmp.removeAll(longest_tmp);
+                }
+            }
+        }
+        System.out.println("Longest coincidence");
+        System.out.println(longest);
+    }
+}
